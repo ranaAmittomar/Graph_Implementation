@@ -57,10 +57,23 @@ public:
 
     //DFS Implementation....
 
+    void dfs_helper(int node, bool* visited) //helper function for the RECURSIVE CALLs for DFS..
+    {
+        visited[node] = true;
+        cout << node << " ";
+        for (int nbr : l[node])
+        {
+            if (!visited[nbr])
+            {
+                dfs_helper(nbr, visited);
+            }
+        }
+    }
 
     void dfs(int source)
     {
-
+        bool* visited = new bool[V] {0}; //initialising the Visited array with 0 to keep track of visited Node..
+        dfs_helper(source, visited);
     }
 
     void printAdjacencyList()
@@ -97,6 +110,18 @@ int main()
     g.printAdjacencyList();
 
     */
+
+    Graph gdfs(5);
+    gdfs.addEdge(0, 1);
+    gdfs.addEdge(0, 2);
+    gdfs.addEdge(0, 3);
+    gdfs.addEdge(1, 2);
+    gdfs.addEdge(2, 4);
+    gdfs.addEdge(3, 3);
+    gdfs.addEdge(4, 4);
+
+   // gdfs.dfs(0); //calling the dfs function to print the path of visited node.
+
 
     return 0;
 }
