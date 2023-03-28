@@ -120,7 +120,9 @@ int main()
     gdfs.addEdge(3, 3);
     gdfs.addEdge(4, 4);
 
-   // gdfs.dfs(0); //calling the dfs function to print the path of visited node.
+    //gdfs.dfs(0); //calling the dfs function to print the path of visited node.
+    //gdfs.bfs(0);
+    //gdfs.printAdjacencyList();
 
 
     return 0;
