@@ -30,7 +30,7 @@ public:
 
     //BFS Implementation....
 
-    void bfs(int source) //Source is -> From Where we'll start our Traversal....
+    void bfs(int source) //(int source) is -> From Where we'll start our Traversal....
     {
         queue<int> q;
         bool* visited = new bool[V]{0};
@@ -76,6 +76,42 @@ public:
         dfs_helper(source, visited);
     }
 
+
+    void topologicalSort()
+    {
+        vector<int> indegree(V, 0);
+        for (int i = 0; i < V; i++)
+        {
+            for (auto nbr : l[i])
+            {
+                indegree[nbr]++;
+            }
+        }
+        queue<int> q;
+        for (int i = 0; i < V; i++)
+        {
+            if (indegree[i] == 0)
+            {
+                q.push(i);
+            }
+            while (q.empty())
+            {
+                int node = q.front();
+                cout << node << "  ";
+                q.pop();
+
+                for (auto nbr : l[node])
+                {
+                    indegree[nbr]--;
+                    if (indegree[nbr] == 0) {
+                        q.push(nbr);
+                    }
+                }
+            }
+        }
+        
+    }
+
     void printAdjacencyList()
     {
         for (int i = 0; i < V; i++)
@@ -90,6 +126,9 @@ public:
         }
 
     }
+
+
+
 };
 
 
