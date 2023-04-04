@@ -27,7 +27,6 @@ public:
         }
     }
 
-
     //BFS Implementation....
 
     void bfs(int source) //(int source) is -> From Where we'll start our Traversal....
@@ -76,10 +75,9 @@ public:
         dfs_helper(source, visited);
     }
 
-
-    void topologicalSort()
+    void topologicalSort()  //Topological sort if a Modified Version of BFS .. However we maintain the order by INDEGREE of a node.
     {
-        vector<int> indegree(V, 0);
+        vector<int> indegree(V, 0); //The indegree is like how many node are depending on a particular nodes.
         for (int i = 0; i < V; i++)
         {
             for (auto nbr : l[i])
@@ -126,9 +124,6 @@ public:
         }
 
     }
-
-
-
 };
 
 
@@ -158,6 +153,9 @@ int main()
     gdfs.addEdge(2, 4);
     gdfs.addEdge(3, 3);
     gdfs.addEdge(4, 4);
+    cout << endl;
+
+    gdfs.dfs(1);
 
     //gdfs.dfs(0); //calling the dfs function to print the path of visited node.
     //gdfs.bfs(0);
